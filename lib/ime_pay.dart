@@ -58,7 +58,7 @@ class ImePay {
               amount: responseMap["amount"],
               msisdn: responseMap["msisdn"],
               refId: responseMap["refId"],
-              responseCode: responseMap["responseCode"],
+              responseCode: (responseMap["responseCode"] as dynamic).toString(),
               responseDescription: responseMap["responseDescription"],
               transactionId: responseMap["transactionId"]);
           onSuccess(response);
