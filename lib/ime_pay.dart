@@ -54,10 +54,11 @@ class ImePay {
       switch (call.method) {
         case "ime_pay#success":
           Map<String, dynamic> responseMap = Map.from(call.arguments);
+          var rId = responseMap["refId"] as String;
           ImePaySuccessResponse response = ImePaySuccessResponse(
               amount: responseMap["amount"],
               msisdn: responseMap["msisdn"],
-              refId: responseMap["refId"],
+              refId: rId == null || rId.isEmpty ? this.refId : rId,
               responseCode: (responseMap["responseCode"] as dynamic).toString(),
               responseDescription: responseMap["responseDescription"],
               transactionId: responseMap["transactionId"]);
